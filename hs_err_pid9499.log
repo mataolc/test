@@ -1,0 +1,422 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0xb6d39cb8, pid=9499, tid=2404727616
+#
+# JRE version: Java(TM) SE Runtime Environment (7.0_51-b13) (build 1.7.0_51-b13)
+# Java VM: Java HotSpot(TM) Server VM (24.51-b03 mixed mode linux-x86 )
+# Problematic frame:
+# V  [libjvm.so+0x483cb8]  java_lang_String::utf8_length(oopDesc*)+0x58
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x8dd2c800):  JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_in_vm, id=9513, stack(0x8f503000,0x8f554000)]
+
+siginfo:si_signo=SIGSEGV: si_errno=0, si_code=1 (SEGV_MAPERR), si_addr=0x00000008
+
+Registers:
+EAX=0x00000000, EBX=0xb7178c18, ECX=0x00000000, EDX=0xa8a8c1b8
+ESP=0x8f552d20, EBP=0x8f552d28, ESI=0x00000000, EDI=0x00000ffc
+EIP=0xb6d39cb8, EFLAGS=0x00210246, CR2=0x00000008
+
+Top of Stack: (sp=0x8f552d20)
+0x8f552d20:   b7178c18 8dd2c800 8f552d78 b6d84158
+0x8f552d30:   a8a8c1b8 8dd2c930 8f552d78 b66f217b
+0x8f552d40:   8dd2c930 a8a8c1b8 b6759558 b66ff16c
+0x8f552d50:   08c8e4f4 8f552f4c 8dd2c800 00000000
+0x8f552d60:   08c8e4f4 8f552f4c 8dd2c800 b66ff16c
+0x8f552d70:   8f552f4c 8dd2c930 8f552da8 b66d1473
+0x8f552d80:   8dd2c930 08c8e4f4 00000000 b66e7968
+0x8f552d90:   00000008 00000032 08c8e4f4 b66ff16c 
+
+Instructions: (pc=0xb6d39cb8)
+0xb6d39c98:   02 31 d2 85 c0 74 04 8d 54 4e 0c 56 56 50 52 e8
+0xb6d39ca8:   d4 92 33 00 8d 65 f8 5b 5e 5d c3 90 8d 74 26 00
+0xb6d39cb8:   8b 46 08 eb dc 90 66 90 55 89 e5 57 56 53 83 ec
+0xb6d39cc8:   1c e8 00 00 00 00 5b 81 c3 4a ef 43 00 8b 83 6c 
+
+Register to memory mapping:
+
+EAX=0x00000000 is an unknown value
+EBX=0xb7178c18: <offset 0x8c2c18> in /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/server/libjvm.so at 0xb68b6000
+ECX=0x00000000 is an unknown value
+EDX=0xa8a8c1b8 is an oop
+java.lang.String 
+ - klass: 'java/lang/String'
+ESP=0x8f552d20 is pointing into the stack for thread: 0x8dd2c800
+EBP=0x8f552d28 is pointing into the stack for thread: 0x8dd2c800
+ESI=0x00000000 is an unknown value
+EDI=0x00000ffc is an unknown value
+
+
+Stack: [0x8f503000,0x8f554000],  sp=0x8f552d20,  free space=319k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x483cb8]  java_lang_String::utf8_length(oopDesc*)+0x58
+V  [libjvm.so+0x4ce158]  jni_GetStringUTFChars+0xa8
+C  [libjdwp.so+0x9473]  value+0x93
+C  [libjdwp.so+0x12813]  debugLoop_run+0x303
+C  [libjdwp.so+0x26f7f]  connectionInitiated+0xbf
+C  [libjdwp.so+0x26fc0]  attachThread+0x30
+V  [libjvm.so+0x5736fc]  JvmtiAgentThread::call_start_function()+0x9c
+V  [libjvm.so+0x7996d9]  JavaThread::thread_main_inner()+0x109
+V  [libjvm.so+0x799833]  JavaThread::run()+0x123
+V  [libjvm.so+0x67e319]  java_start(Thread*)+0x119
+C  [libpthread.so.0+0x6d4c]  start_thread+0xcc
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x8dd3d400 JavaThread "Service Thread" daemon [_thread_blocked, id=9521, stack(0x8d9e8000,0x8da39000)]
+  0x8dd33400 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=9520, stack(0x8da39000,0x8daba000)]
+  0x8dd30c00 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=9519, stack(0x8daba000,0x8db3b000)]
+  0x08c8b800 JavaThread "JDWP Command Reader" daemon [_thread_in_native, id=9515, stack(0x8db3b000,0x8db8c000)]
+  0x8dd2f000 JavaThread "JDWP Event Helper Thread" daemon [_thread_blocked, id=9514, stack(0x8db8c000,0x8dbdd000)]
+=>0x8dd2c800 JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_in_vm, id=9513, stack(0x8f503000,0x8f554000)]
+  0x8dd23c00 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=9511, stack(0x8f554000,0x8f5a5000)]
+  0x8dd14c00 JavaThread "Finalizer" daemon [_thread_blocked, id=9510, stack(0x8dbdd000,0x8dc2e000)]
+  0x8dd12400 JavaThread "Reference Handler" daemon [_thread_blocked, id=9509, stack(0x8dc2e000,0x8dc7f000)]
+  0xb6709000 JavaThread "main" [_thread_blocked, id=9505, stack(0xb6839000,0xb688a000)]
+
+Other Threads:
+  0x8dd10800 VMThread [stack: 0x8dc7f000,0x8dd00000] [id=9508]
+  0x8dd3f000 WatcherThread [stack: 0x8d967000,0x8d9e8000] [id=9522]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 9472K, used 491K [0xa8a40000, 0xa94c0000, 0xb3240000)
+  eden space 8192K, 6% used [0xa8a40000,0xa8abaf18,0xa9240000)
+  from space 1280K, 0% used [0xa9380000,0xa9380000,0xa94c0000)
+  to   space 1280K, 0% used [0xa9240000,0xa9240000,0xa9380000)
+ ParOldGen       total 21504K, used 0K [0x93a40000, 0x94f40000, 0xa8a40000)
+  object space 21504K, 0% used [0x93a40000,0x93a40000,0x94f40000)
+ PSPermGen       total 16384K, used 1625K [0x8fa40000, 0x90a40000, 0x93a40000)
+  object space 16384K, 9% used [0x8fa40000,0x8fbd66f0,0x90a40000)
+
+Card table byte_map: [0x8f923000,0x8fa40000] byte_map_base: 0x8f4a5e00
+
+Polling page: 0xb7798000
+
+Code Cache  [0xb330a000, 0xb354a000, 0xb630a000)
+ total_blobs=88 nmethods=0 adapters=66 free_code_cache=48865Kb largest_free_block=50038720
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (2 events):
+Event: 0.076 Thread 0xb6709000 Threw 0xa8a4f740 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u51/527/hotspot/src/share/vm/prims/jni.cpp:3991
+Event: 0.485 Thread 0xb6709000 Threw 0xa8a87888 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+
+Events (10 events):
+Event: 5.429 Executing VM operation: EnterInterpOnlyMode
+Event: 5.429 Executing VM operation: EnterInterpOnlyMode done
+Event: 5.429 Executing VM operation: GetCurrentLocation
+Event: 5.429 Executing VM operation: GetCurrentLocation done
+Event: 5.429 Executing VM operation: ChangeSingleStep
+Event: 5.429 Executing VM operation: ChangeSingleStep done
+Event: 5.431 Executing VM operation: ChangeSingleStep
+Event: 5.431 Executing VM operation: ChangeSingleStep done
+Event: 5.502 Executing VM operation: GetOrSetLocal
+Event: 5.502 Executing VM operation: GetOrSetLocal done
+
+
+Dynamic libraries:
+08048000-08049000 r-xp 00000000 07:00 417305     /home/taotao/developmentKit/jdk1.7.0_51/bin/java
+08049000-0804a000 rw-p 00000000 07:00 417305     /home/taotao/developmentKit/jdk1.7.0_51/bin/java
+08c8a000-08cab000 rw-p 00000000 00:00 0          [heap]
+8d74e000-8d967000 rw-p 00000000 00:00 0 
+8d967000-8d968000 ---p 00000000 00:00 0 
+8d968000-8d9e8000 rw-p 00000000 00:00 0 
+8d9e8000-8d9eb000 ---p 00000000 00:00 0 
+8d9eb000-8da39000 rw-p 00000000 00:00 0 
+8da39000-8da3c000 ---p 00000000 00:00 0 
+8da3c000-8daba000 rw-p 00000000 00:00 0 
+8daba000-8dabd000 ---p 00000000 00:00 0 
+8dabd000-8db3b000 rw-p 00000000 00:00 0 
+8db3b000-8db3e000 ---p 00000000 00:00 0 
+8db3e000-8db8c000 rw-p 00000000 00:00 0 
+8db8c000-8db8f000 ---p 00000000 00:00 0 
+8db8f000-8dbdd000 rw-p 00000000 00:00 0 
+8dbdd000-8dbe0000 ---p 00000000 00:00 0 
+8dbe0000-8dc2e000 rw-p 00000000 00:00 0 
+8dc2e000-8dc31000 ---p 00000000 00:00 0 
+8dc31000-8dc7f000 rw-p 00000000 00:00 0 
+8dc7f000-8dc80000 ---p 00000000 00:00 0 
+8dc80000-8dd00000 rw-p 00000000 00:00 0 
+8dd00000-8dd4c000 rw-p 00000000 00:00 0 
+8dd4c000-8de00000 ---p 00000000 00:00 0 
+8de00000-8de4b000 rw-p 00000000 00:00 0 
+8de4b000-8e008000 r--s 039bf000 07:00 417318     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/rt.jar
+8e008000-8f400000 rw-p 00000000 00:00 0 
+8f400000-8f421000 rw-p 00000000 00:00 0 
+8f421000-8f500000 ---p 00000000 00:00 0 
+8f503000-8f506000 ---p 00000000 00:00 0 
+8f506000-8f554000 rw-p 00000000 00:00 0 
+8f554000-8f557000 ---p 00000000 00:00 0 
+8f557000-8f600000 rw-p 00000000 00:00 0 
+8f600000-8f621000 rw-p 00000000 00:00 0 
+8f621000-8f700000 ---p 00000000 00:00 0 
+8f74b000-8f759000 rw-p 00000000 00:00 0 
+8f759000-8f75a000 ---p 00000000 00:00 0 
+8f75a000-8f7da000 rw-p 00000000 00:00 0 
+8f7da000-8f7db000 ---p 00000000 00:00 0 
+8f7db000-8f863000 rw-p 00000000 00:00 0 
+8f863000-8f87b000 rw-p 00000000 00:00 0 
+8f87b000-8f886000 rw-p 00000000 00:00 0 
+8f886000-8f923000 rw-p 00000000 00:00 0 
+8f923000-8f92b000 rw-p 00000000 00:00 0 
+8f92b000-8f943000 rw-p 00000000 00:00 0 
+8f943000-8f94e000 rw-p 00000000 00:00 0 
+8f94e000-8f9eb000 rw-p 00000000 00:00 0 
+8f9eb000-8f9f1000 rw-p 00000000 00:00 0 
+8f9f1000-8fa3f000 rw-p 00000000 00:00 0 
+8fa3f000-90a40000 rw-p 00000000 00:00 0 
+90a40000-93a40000 rw-p 00000000 00:00 0 
+93a40000-94f40000 rw-p 00000000 00:00 0 
+94f40000-a8a40000 rw-p 00000000 00:00 0 
+a8a40000-a94c0000 rw-p 00000000 00:00 0 
+a94c0000-b3240000 rw-p 00000000 00:00 0 
+b3245000-b3246000 rw-p 00000000 00:00 0 
+b3246000-b3249000 r-xp 00000000 07:00 417847     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/libdt_socket.so
+b3249000-b324a000 rw-p 00003000 07:00 417847     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/libdt_socket.so
+b324a000-b3253000 rw-p 00000000 00:00 0 
+b3253000-b330a000 rw-p 00000000 00:00 0 
+b330a000-b354a000 rwxp 00000000 00:00 0 
+b354a000-b630a000 rw-p 00000000 00:00 0 
+b630a000-b6321000 r-xp 00000000 07:00 417865     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/libzip.so
+b6321000-b6322000 rw-p 00017000 07:00 417865     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/libzip.so
+b6322000-b632d000 r-xp 00000000 07:00 266441     /lib/i386-linux-gnu/libnss_files-2.15.so
+b632d000-b632e000 r--p 0000a000 07:00 266441     /lib/i386-linux-gnu/libnss_files-2.15.so
+b632e000-b632f000 rw-p 0000b000 07:00 266441     /lib/i386-linux-gnu/libnss_files-2.15.so
+b632f000-b6345000 r-xp 00000000 07:00 266427     /lib/i386-linux-gnu/libnsl-2.15.so
+b6345000-b6346000 r--p 00015000 07:00 266427     /lib/i386-linux-gnu/libnsl-2.15.so
+b6346000-b6347000 rw-p 00016000 07:00 266427     /lib/i386-linux-gnu/libnsl-2.15.so
+b6347000-b6349000 rw-p 00000000 00:00 0 
+b6349000-b6350000 r-xp 00000000 07:00 266442     /lib/i386-linux-gnu/libnss_compat-2.15.so
+b6350000-b6351000 r--p 00006000 07:00 266442     /lib/i386-linux-gnu/libnss_compat-2.15.so
+b6351000-b6352000 rw-p 00007000 07:00 266442     /lib/i386-linux-gnu/libnss_compat-2.15.so
+b6352000-b6354000 rw-p 00000000 00:00 0 
+b6354000-b635b000 r--s 00000000 07:00 1781       /usr/lib/i386-linux-gnu/gconv/gconv-modules.cache
+b635b000-b6363000 rw-s 00000000 07:00 813011     /tmp/hsperfdata_taotao/9499
+b6363000-b64c8000 r--p 001c8000 07:00 6784       /usr/lib/locale/locale-archive
+b64c8000-b66c8000 r--p 00000000 07:00 6784       /usr/lib/locale/locale-archive
+b66c8000-b66ff000 r-xp 00000000 07:00 417840     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/libjdwp.so
+b66ff000-b6700000 rw-p 00037000 07:00 417840     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/libjdwp.so
+b6700000-b67f4000 rw-p 00000000 00:00 0 
+b67f4000-b6800000 ---p 00000000 00:00 0 
+b6800000-b680a000 r-xp 00000000 07:00 266440     /lib/i386-linux-gnu/libnss_nis-2.15.so
+b680a000-b680b000 r--p 00009000 07:00 266440     /lib/i386-linux-gnu/libnss_nis-2.15.so
+b680b000-b680c000 rw-p 0000a000 07:00 266440     /lib/i386-linux-gnu/libnss_nis-2.15.so
+b680c000-b682f000 r-xp 00000000 07:00 417828     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/libjava.so
+b682f000-b6830000 rw-p 00022000 07:00 417828     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/libjava.so
+b6830000-b6837000 r-xp 00000000 07:00 266435     /lib/i386-linux-gnu/librt-2.15.so
+b6837000-b6838000 r--p 00006000 07:00 266435     /lib/i386-linux-gnu/librt-2.15.so
+b6838000-b6839000 rw-p 00007000 07:00 266435     /lib/i386-linux-gnu/librt-2.15.so
+b6839000-b683c000 ---p 00000000 00:00 0 
+b683c000-b688a000 rw-p 00000000 00:00 0 
+b688a000-b68b4000 r-xp 00000000 07:00 266439     /lib/i386-linux-gnu/libm-2.15.so
+b68b4000-b68b5000 r--p 00029000 07:00 266439     /lib/i386-linux-gnu/libm-2.15.so
+b68b5000-b68b6000 rw-p 0002a000 07:00 266439     /lib/i386-linux-gnu/libm-2.15.so
+b68b6000-b712d000 r-xp 00000000 07:00 417864     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/server/libjvm.so
+b712d000-b7191000 rw-p 00877000 07:00 417864     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/server/libjvm.so
+b7191000-b75b5000 rw-p 00000000 00:00 0 
+b75b5000-b7759000 r-xp 00000000 07:00 266444     /lib/i386-linux-gnu/libc-2.15.so
+b7759000-b775b000 r--p 001a4000 07:00 266444     /lib/i386-linux-gnu/libc-2.15.so
+b775b000-b775c000 rw-p 001a6000 07:00 266444     /lib/i386-linux-gnu/libc-2.15.so
+b775c000-b775f000 rw-p 00000000 00:00 0 
+b775f000-b7762000 r-xp 00000000 07:00 266443     /lib/i386-linux-gnu/libdl-2.15.so
+b7762000-b7763000 r--p 00002000 07:00 266443     /lib/i386-linux-gnu/libdl-2.15.so
+b7763000-b7764000 rw-p 00003000 07:00 266443     /lib/i386-linux-gnu/libdl-2.15.so
+b7764000-b7777000 r-xp 00000000 07:00 416237     /home/taotao/developmentKit/jdk1.7.0_51/lib/i386/jli/libjli.so
+b7777000-b7778000 rw-p 00012000 07:00 416237     /home/taotao/developmentKit/jdk1.7.0_51/lib/i386/jli/libjli.so
+b7778000-b7779000 rw-p 00000000 00:00 0 
+b7779000-b7790000 r-xp 00000000 07:00 266433     /lib/i386-linux-gnu/libpthread-2.15.so
+b7790000-b7791000 r--p 00016000 07:00 266433     /lib/i386-linux-gnu/libpthread-2.15.so
+b7791000-b7792000 rw-p 00017000 07:00 266433     /lib/i386-linux-gnu/libpthread-2.15.so
+b7792000-b7794000 rw-p 00000000 00:00 0 
+b7794000-b7796000 r-xp 00000000 07:00 417859     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/libnpt.so
+b7796000-b7797000 rw-p 00002000 07:00 417859     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/libnpt.so
+b7797000-b7798000 rw-p 00000000 00:00 0 
+b7798000-b7799000 r--p 00000000 00:00 0 
+b7799000-b77a4000 r-xp 00000000 07:00 417810     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/libverify.so
+b77a4000-b77a5000 rw-p 0000b000 07:00 417810     /home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/libverify.so
+b77a5000-b77a7000 rw-p 00000000 00:00 0 
+b77a7000-b77a8000 r-xp 00000000 00:00 0          [vdso]
+b77a8000-b77c8000 r-xp 00000000 07:00 266434     /lib/i386-linux-gnu/ld-2.15.so
+b77c8000-b77c9000 r--p 0001f000 07:00 266434     /lib/i386-linux-gnu/ld-2.15.so
+b77c9000-b77ca000 rw-p 00020000 07:00 266434     /lib/i386-linux-gnu/ld-2.15.so
+bfdbe000-bfddf000 rw-p 00000000 00:00 0          [stack]
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:48654 -Dfile.encoding=UTF-8 
+java_command: test.Test
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/home/taotao/developmentKit/jdk1.7.0_51
+CLASSPATH=.:/home/taotao/developmentKit/jdk1.7.0_51/lib/dt.jar:/home/taotao/developmentKit/jdk1.7.0_51/lib/tools.jar
+PATH=/home/taotao/developmentKit/jdk1.7.0_51/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/taotao/developmentKit/apache-maven-3.0.5/bin:/home/taotao/somePackage/findbugs-1.3.9/bin
+LD_LIBRARY_PATH=/home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/server:/home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386:/home/taotao/developmentKit/jdk1.7.0_51/jre/../lib/i386:/home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386/client:/home/taotao/developmentKit/jdk1.7.0_51/jre/lib/i386:
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x7dd5e0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x7dd5e0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x678d60], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x678d60], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x678d60], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x678d60], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x67a250], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x67b3a0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libjvm.so+0x67b3a0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTERM: [libjvm.so+0x67b3a0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x67b3a0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:wheezy/sid
+
+uname:Linux 3.2.0-64-generic-pae #97-Ubuntu SMP Wed Jun 4 22:22:15 UTC 2014 i686
+libc:glibc 2.15 NPTL 2.15 
+rlimit: STACK 8192k, CORE 0k, NPROC 15953, NOFILE 4096, AS infinity
+load average:1.31 0.98 0.81
+
+/proc/meminfo:
+MemTotal:        2056612 kB
+MemFree:          139492 kB
+Buffers:          151444 kB
+Cached:           174792 kB
+SwapCached:        31792 kB
+Active:          1100580 kB
+Inactive:         618872 kB
+Active(anon):     938012 kB
+Inactive(anon):   459976 kB
+Active(file):     162568 kB
+Inactive(file):   158896 kB
+Unevictable:        2588 kB
+Mlocked:               0 kB
+HighTotal:       1178876 kB
+HighFree:          21212 kB
+LowTotal:         877736 kB
+LowFree:          118280 kB
+SwapTotal:        262140 kB
+SwapFree:           8416 kB
+Dirty:              1300 kB
+Writeback:             0 kB
+AnonPages:       1364028 kB
+Mapped:            83012 kB
+Shmem:              2188 kB
+Slab:              36672 kB
+SReclaimable:      18300 kB
+SUnreclaim:        18372 kB
+KernelStack:        6496 kB
+PageTables:        11952 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1290444 kB
+Committed_AS:    4530968 kB
+VmallocTotal:     122880 kB
+VmallocUsed:       13056 kB
+VmallocChunk:     107700 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      411640 kB
+DirectMap2M:      501760 kB
+
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 23 stepping 10, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, tsc
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 23
+model name	: Intel(R) Core(TM)2 Duo CPU     T6670  @ 2.20GHz
+stepping	: 10
+microcode	: 0xa07
+cpu MHz		: 2201.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 2
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx lm constant_tsc arch_perfmon pebs bts aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm sse4_1 xsave lahf_lm ida dtherm tpr_shadow vnmi flexpriority
+bogomips	: 4389.22
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 23
+model name	: Intel(R) Core(TM)2 Duo CPU     T6670  @ 2.20GHz
+stepping	: 10
+microcode	: 0xa07
+cpu MHz		: 2201.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 2
+core id		: 1
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx lm constant_tsc arch_perfmon pebs bts aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm sse4_1 xsave lahf_lm ida dtherm tpr_shadow vnmi flexpriority
+bogomips	: 4388.96
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 2056612k(139492k free), swap 262140k(8416k free)
+
+vm_info: Java HotSpot(TM) Server VM (24.51-b03) for linux-x86 JRE (1.7.0_51-b13), built on Dec 18 2013 18:45:30 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Thu Jun 19 20:43:11 2014
+elapsed time: 6 seconds
+
